@@ -63,7 +63,7 @@ class Tarea{ //clase para crear tareas. Esto es un molde donde decidimos todo lo
     }
 
     borrarTarea(){ //implementación de la función borrar tarea en el FRONT
-        fetch("http://localhost:3000/api-todo/borrar/" + this.id, { //pido a la api, esto espera un resultado
+        fetch("https://api-todo-clase-hdl4.onrender.com/api-todo/borrar/" + this.id, { //pido a la api, esto espera un resultado
             method : "DELETE"
         })
         .then(respuesta => respuesta.json()) //aqui viene el objetito {resultado}. Le podemos hacer referencia en la función como tal, no aquí que es la llamada a la bd
@@ -76,7 +76,7 @@ class Tarea{ //clase para crear tareas. Esto es un molde donde decidimos todo lo
     }
 
     toggleEstado(){ //aquí va a suceder una llamada al backend.
-        return fetch(`http://localhost:3000/api-todo/actualizar/${this.id}/2`,{
+        return fetch(`https://api-todo-clase-hdl4.onrender.com/api-todo/actualizar/${this.id}/2`,{
                     method : "PUT"
                 })
                 .then(respuesta => respuesta.json()); //esto es una promesa. Cuando se resuelva la promesa, se ejecutará el siguiente then
@@ -95,7 +95,7 @@ class Tarea{ //clase para crear tareas. Esto es un molde donde decidimos todo lo
             //actualizar el backend
            
             if (textoTemporal.trim() !== "" && textoTemporal.trim() !== this.textoTarea) { //si el texto temporal no está vacío y es diferente al texto tarea
-                let { resultado } = await fetch(`http://localhost:3000/api-todo/actualizar/${this.id}/1`, { //usamos await para esperar a que se complete la solicitud
+                let { resultado } = await fetch(`https://api-todo-clase-hdl4.onrender.com/api-todo/actualizar/${this.id}/1`, { //usamos await para esperar a que se complete la solicitud
                                             method: "PUT",
                                             body: JSON.stringify({ tarea : textoTemporal.trim() }), //quiero que mandes el objeto json tarea : y el texto temporal sin espacios
                                             headers: {

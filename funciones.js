@@ -4,7 +4,7 @@ const input = document.querySelector('form input[type="text"]');
 
 //Aquí van las tareas que vamos creando con el back
 
-fetch("http://localhost:3000/api-todo") //para obtener las tareas que ya existen en el back
+fetch("https://api-todo-clase-hdl4.onrender.com/api-todo") //para obtener las tareas que ya existen en el back
 .then(respuesta => respuesta.json()) // las convertimos en json para poder leerlas
 .then(tareas => { //una vez las tenemos las recorremos
     tareas.forEach(({id,tarea,terminada}) => { //para cada tarea quiero que me crees una nueva tarea
@@ -19,7 +19,7 @@ fetch("http://localhost:3000/api-todo") //para obtener las tareas que ya existen
 formulario.addEventListener("submit", evento => { //dentro del input ahora sea lo que se escribe en el formulario
     evento.preventDefault(); //evita que el formulario se envíe de la manera predeterminada, que normalmente recargaría la página.
     if(/^[a-záéíóúñ][a-záéíóúñ0-9 ]*$/i.test(input.value)){ // ^ y $ es para que no te pongan espacios ni al principio ni al final y el + para indicar que sea una o más veces. El i es para que de igual si es mayúsculas o minúsculas//test busca la expresion regular y si la cumple funciona.
-        return fetch("http://localhost:3000/api-todo/crear", { //si el valor ingresado es válido realiza una solicitud post para crear una nueva tarea
+        return fetch("https://api-todo-clase-hdl4.onrender.com/api-todo/crear", { //si el valor ingresado es válido realiza una solicitud post para crear una nueva tarea
             method : "POST",
             body : JSON.stringify({ tarea : input.value }), //convierte la tarea a json para mandarla al backend. Ponemos input.value porque queremos lo que justo ha escrito el usuario en el input
             headers : {
